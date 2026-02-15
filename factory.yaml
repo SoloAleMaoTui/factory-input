@@ -1,0 +1,10 @@
+apiVersion: factory.bosch/v1
+kind: BuildDescriptor
+language: cpp
+build:
+  system: cmake
+  preset: release
+artifacts:
+  name: hello
+policy:
+  tier: standard   # standard|restricted|safety
