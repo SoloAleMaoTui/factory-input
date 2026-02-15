@@ -1,0 +1,25 @@
+name: Trigger Factory
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Azure DevOps pipeline
+        env:
+          ADO_ORG: leshasolovtsov
+          ADO_PROJECT: factory
+          PIPELINE_ID: "123"   # replace with your tenant pipeline id in ADO
+          ADO_PAT: ${{ secrets.ADO_PAT }}
+        run: |
+          set -euxo pipefail
+          url="https://dev.azure.com/${ADO_ORG}/${ADO_PROJECT}/_apis/pipelines/${PIPELINE_ID}/runs?api-version=7.1-preview.1"
+          curl -sS -u :${ADO_PAT} \
+            -H "Content-Type: application/json" \
+            -X POST \
+            -d '{}' \
+            "$url"
