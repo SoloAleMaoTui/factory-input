@@ -1,3 +1,4 @@
+---
 apiVersion: factory.bosch/v1
 kind: BuildDescriptor
 language: cpp
