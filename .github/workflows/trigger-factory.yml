@@ -13,7 +13,7 @@ jobs:
         env:
           ADO_ORG: leshasolovtsov
           ADO_PROJECT: factory
-          PIPELINE_ID: "123"   # replace with your tenant pipeline id in ADO
+          PIPELINE_ID: "2"   # replace with your tenant pipeline id in ADO, can be found in URL
           ADO_PAT: ${{ secrets.ADO_PAT }}
         run: |
           set -euxo pipefail
